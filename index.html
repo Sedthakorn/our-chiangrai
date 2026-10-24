@@ -12,7 +12,7 @@ input,textarea,button{font:inherit}input,textarea{width:100%;border:1px solid #e
 button{border:0;border-radius:999px;background:linear-gradient(135deg,#c27c8c,#a95f74);color:white;padding:11px 18px;cursor:pointer;box-shadow:0 5px 13px #b76b7b24;transition:transform .18s,box-shadow .18s}button:hover{transform:translateY(-1px);box-shadow:0 8px 18px #b76b7b30}button:disabled{opacity:.5;cursor:wait}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}
 .days{display:flex;gap:8px;overflow:auto;padding:3px 1px 17px;scrollbar-width:thin}.day{flex:0 0 auto;min-width:86px;background:#fffaf8;border:1px solid var(--line);color:var(--ink);border-radius:17px;padding:12px 13px;box-shadow:none}.day small{font-size:.7rem;opacity:.8}.day.active{background:linear-gradient(145deg,#c98594,#a95f74);color:white;border-color:transparent}.event{border-left:1px solid #e8c0c7;padding:0 0 19px 17px;margin-left:6px;position:relative}.event:last-child{padding-bottom:2px}.event:before{content:"";position:absolute;width:9px;height:9px;background:#c47f8e;border:3px solid #fff5f4;border-radius:50%;left:-7px;top:4px;box-shadow:0 0 0 1px #e8c0c7}.event b{display:block;font-size:.95rem;font-weight:650}.event p{margin:5px 0 0;color:var(--muted);font-size:.87rem;line-height:1.6}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px}.photo{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff8f7;transition:transform .2s,box-shadow .2s}.photo:hover{transform:translateY(-3px);box-shadow:0 10px 25px #82515c15}.photo img{width:100%;height:175px;object-fit:cover;display:block}.photo div{padding:11px 12px;font-size:.85rem;line-height:1.5}.delete-btn{background:#f7e6e7;color:#8f4f61;box-shadow:none;padding:7px 12px;font-size:.78rem;margin:3px 0 0}.memory-item{border-bottom:1px solid var(--line);padding:12px 0}.memory-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.memory-head b{overflow-wrap:anywhere}.photo-actions{padding:0 11px 11px!important}.status{border-radius:15px;padding:12px 15px;background:#fff0f2;color:#8c5261;font-size:.86rem;line-height:1.6}.status.ok{background:#edf4e9;color:#526b4e}.status.error{background:#fff0e8;color:#995329}hr{opacity:.7}footer{text-align:center;color:#a18a90;padding:28px 12px 10px;font:italic 1rem Georgia,serif}
-.hidden{display:none!important}
+.hidden{display:none!important}.plan-editor{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}.plan-item{border:1px solid var(--line);border-radius:15px;padding:12px 14px;margin:9px 0;background:#fffaf8}.plan-item-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.plan-item p{white-space:pre-wrap;color:var(--muted);font-size:.88rem;margin:6px 0 0}.music-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:18px;background:#f9e9eb}.music-note{font-size:.85rem;color:var(--muted);line-height:1.65}.small-btn{padding:8px 13px;font-size:.82rem}
 @media(max-width:600px){header{padding:50px 15px 30px}header:before,header:after{font-size:55px;top:25px}.card{padding:19px;border-radius:21px}.row{display:block}.day{min-width:76px;padding:10px 12px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.photo img{height:145px}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -24,6 +24,16 @@ button{border:0;border-radius:999px;background:linear-gradient(135deg,#c27c8c,#a
 <section class="card">
 <h2>Our days together ✿</h2><div class="days" id="days"></div>
 <h2 id="dateTitle">วันของเรา</h2><div id="schedule"></div>
+<div class="plan-editor">
+<h2>แก้ไขแผนเที่ยวของเรา ✎</h2>
+<p class="muted">แผนที่เพิ่มหรือแก้ไขจะบันทึกออนไลน์ และแสดงบนมือถือของเราทั้งคู่</p>
+<div id="customPlans"></div>
+<h3 style="font:500 1.05rem Georgia,serif;color:#78515d">เพิ่มแผนใหม่ ♡</h3>
+<label>เวลา</label><input id="planTime" placeholder="เช่น 14:00–15:00">
+<label>ชื่อกิจกรรม / สถานที่</label><input id="planTitle" placeholder="เช่น แวะคาเฟ่ด้วยกัน">
+<label>รายละเอียด</label><textarea id="planDetails" placeholder="ที่อยู่ หมายเหตุ หรือสิ่งที่อยากทำ" style="min-height:75px"></textarea>
+<button id="addPlan" type="button">＋ เพิ่มแผนวันนี้</button>
+</div>
 </section>
 <section class="card">
 <h2>เก็บวันนี้ไว้ด้วยกัน ♡</h2>
@@ -36,6 +46,15 @@ button{border:0;border-radius:999px;background:linear-gradient(135deg,#c27c8c,#a
 <label>เลือกรูปภาพ (ไม่เกิน 5 MB)</label><input id="file" type="file" accept="image/*">
 <button id="upload">อัปโหลดรูป</button>
 <p class="muted">ไม่ต้องสมัครสมาชิกหรือล็อกอิน รูปจะเก็บออนไลน์และแสดงให้เราเห็นด้วยกัน</p>
+</section>
+<section class="card" id="musicCard">
+<h2>เพลงของเราสองคน ♡</h2>
+<p class="muted">ค้นหาเพลงบน YouTube แล้วนำลิงก์เพลงมาวางเพื่อเปิดเล่นได้ตรงนี้</p>
+<div class="row"><input id="songSearch" placeholder="ค้นหาชื่อเพลงหรือศิลปิน" aria-label="ค้นหาเพลง"><button id="searchSong" type="button">ค้นหาใน YouTube</button></div>
+<label>วางลิงก์ YouTube เพลงที่ต้องการฟัง</label><input id="songUrl" placeholder="https://www.youtube.com/watch?v=...">
+<button id="playSong" type="button">▶ เปิดเพลงในเว็บ</button>
+<div id="playerWrap" class="hidden" style="margin-top:15px"><iframe id="youtubePlayer" class="music-frame" title="เครื่องเล่น YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="music-note">หมายเหตุ: ปุ่มค้นหาจะเปิดผลค้นหา YouTube ในแท็บใหม่ จากนั้นคัดลอกลิงก์เพลงมาวางเพื่อเล่นในหน้านี้ บางเพลงอาจไม่อนุญาตให้ฝังเล่น และเบราว์เซอร์อาจต้องให้กดเล่นเอง</p>
 </section>
 <section class="card"><h2>Little moments</h2><div class="gallery" id="gallery"></div></section>
 <section class="card"><h2>Our memories</h2><div id="memories"></div></section>
@@ -55,12 +74,24 @@ const itinerary=[
 ];
 let sb=null,activeDay=6,channel=null,refreshTimer=null;
 function status(t,type=""){const e=$("status");e.textContent=t;e.className="status "+type}
-function renderDays(){$("days").innerHTML=itinerary.map(x=>`<button class="day ${x.d===activeDay?"active":""}" data-d="${x.d}">${x.d}<br><small>${x.name.split(" ")[0]}</small></button>`).join("");document.querySelectorAll(".day").forEach(b=>b.onclick=()=>{activeDay=+b.dataset.d;renderDays();renderSchedule();loadData()})}
+function renderDays(){$("days").innerHTML=itinerary.map(x=>`<button class="day ${x.d===activeDay?"active":""}" data-d="${x.d}">${x.d}<br><small>${x.name.split(" ")[0]}</small></button>`).join("");document.querySelectorAll(".day").forEach(b=>b.onclick=()=>{activeDay=+b.dataset.d;renderDays();renderSchedule();loadData();loadPlans()})}
 function renderSchedule(){const d=itinerary.find(x=>x.d===activeDay);$("dateTitle").textContent=d.name+" · "+d.title;$("schedule").innerHTML=d.events.map(e=>`<div class="event"><b>${e[0]} · ${e[1]}</b><p>${e[2]}</p></div>`).join("")}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 // Shared public configuration: use only the Supabase publishable key, never a secret/service-role key.
 const SUPABASE_URL = "https://zgcxeiftfcfnikhvnsyh.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_qqpXMZ3eJ8wBE0tYv-_0kQ_thvHwxKl";
+// Shared custom itinerary is stored in the Supabase itinerary_plans table.
+async function loadPlans(){
+ if(!sb)return;
+ const r=await sb.from("itinerary_plans").select("id,day,time,title,details,created_at").eq("day",activeDay).order("created_at",{ascending:true});
+ if(r.error){$("customPlans").innerHTML='<p class="muted">ต้องสร้างตาราง itinerary_plans ใน Supabase ก่อน ดูคู่มือติดตั้ง</p>';return}
+ $("customPlans").innerHTML=r.data.length?r.data.map(x=>`<div class="plan-item"><div class="plan-item-top"><b>${esc(x.time||"ไม่ระบุเวลา")} · ${esc(x.title)}</b><button class="delete-btn" data-plan-delete="${x.id}" type="button">ลบแผน</button></div><p>${esc(x.details||"")}</p></div>`).join(""):'<p class="muted">ยังไม่มีแผนเพิ่มของเราในวันนี้</p>';
+ document.querySelectorAll("[data-plan-delete]").forEach(b=>b.onclick=()=>deletePlan(b.dataset.planDelete));
+}
+async function deletePlan(id){if(!confirm("ลบแผนนี้ใช่ไหม? การลบมีผลกับทั้งสองเครื่อง"))return;const r=await sb.from("itinerary_plans").delete().eq("id",id);if(r.error){status("ลบแผนไม่สำเร็จ: "+r.error.message,"error");return}status("ลบแผนแล้ว ♡","ok");loadPlans()}
+$("addPlan").onclick=async()=>{const time=$("planTime").value.trim(),title=$("planTitle").value.trim(),details=$("planDetails").value.trim();if(!title){alert("ใส่ชื่อกิจกรรมหรือสถานที่ก่อนนะ");return}const r=await sb.from("itinerary_plans").insert({day:activeDay,time,title,details});if(r.error){status("เพิ่มแผนไม่สำเร็จ: "+r.error.message+" · ตรวจ SQL ในคู่มือติดตั้ง","error");return}$("planTime").value="";$("planTitle").value="";$("planDetails").value="";status("เพิ่มแผนแล้ว ♡","ok");loadPlans()};
+$("searchSong").onclick=()=>{const q=$("songSearch").value.trim();if(!q){alert("พิมพ์ชื่อเพลงหรือศิลปินก่อนนะ");return}window.open("https://www.youtube.com/results?search_query="+encodeURIComponent(q),"_blank","noopener,noreferrer")};
+$("playSong").onclick=()=>{const raw=$("songUrl").value.trim();let id="";try{const u=new URL(raw);if(u.hostname.endsWith("youtu.be"))id=u.pathname.slice(1).split("/")[0];else if(u.hostname.includes("youtube.com")){if(u.pathname==="/watch")id=u.searchParams.get("v")||"";else if(u.pathname.startsWith("/shorts/" )||u.pathname.startsWith("/embed/"))id=u.pathname.split("/")[2]||""}}catch(e){}if(!/^[A-Za-z0-9_-]{11}$/.test(id)){alert("ลิงก์ไม่ถูกต้อง ลองคัดลอกลิงก์วิดีโอ YouTube ปกติมาวางนะ");return}$("youtubePlayer").src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0";$("playerWrap").classList.remove("hidden")};
 try {
   sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
   status("เชื่อมต่อแล้ว กำลังโหลดความทรงจำ…", "ok");
@@ -98,7 +129,7 @@ async function loadData(showStatus=true){
 }
 // Refresh the current day periodically so updates from the other device appear without manual reload.
 if(refreshTimer)clearInterval(refreshTimer);
-refreshTimer=setInterval(()=>loadData(false),10000);
-(async()=>{renderDays();renderSchedule();if(sb)await loadData()})();
+refreshTimer=setInterval(()=>{loadData(false);loadPlans()},10000);
+(async()=>{renderDays();renderSchedule();if(sb){await loadData();await loadPlans()}})();
 </script>
 </body></html>
