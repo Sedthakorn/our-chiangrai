@@ -11,14 +11,14 @@ header{position:relative;text-align:center;padding:66px 18px 38px;overflow:hidde
 input,textarea,button{font:inherit}input,textarea{width:100%;border:1px solid #ead6d9;border-radius:14px;padding:12px 14px;background:#fffdfb;color:var(--ink);margin:6px 0 13px;outline:none;transition:border .2s,box-shadow .2s}input:focus,textarea:focus{border-color:#c98b98;box-shadow:0 0 0 3px #f7e4e7}textarea{min-height:105px;resize:vertical}label{font-size:.83rem;color:#806770}
 button{border:0;border-radius:999px;background:linear-gradient(135deg,#c27c8c,#a95f74);color:white;padding:11px 18px;cursor:pointer;box-shadow:0 5px 13px #b76b7b24;transition:transform .18s,box-shadow .18s}button:hover{transform:translateY(-1px);box-shadow:0 8px 18px #b76b7b30}button:disabled{opacity:.5;cursor:wait}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}
 .days{display:flex;gap:8px;overflow:auto;padding:3px 1px 17px;scrollbar-width:thin}.day{flex:0 0 auto;min-width:86px;background:#fffaf8;border:1px solid var(--line);color:var(--ink);border-radius:17px;padding:12px 13px;box-shadow:none}.day small{font-size:.7rem;opacity:.8}.day.active{background:linear-gradient(145deg,#c98594,#a95f74);color:white;border-color:transparent}.event{border-left:1px solid #e8c0c7;padding:0 0 19px 17px;margin-left:6px;position:relative}.event:last-child{padding-bottom:2px}.event:before{content:"";position:absolute;width:9px;height:9px;background:#c47f8e;border:3px solid #fff5f4;border-radius:50%;left:-7px;top:4px;box-shadow:0 0 0 1px #e8c0c7}.event b{display:block;font-size:.95rem;font-weight:650}.event p{margin:5px 0 0;color:var(--muted);font-size:.87rem;line-height:1.6}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px}.photo{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff8f7;transition:transform .2s,box-shadow .2s}.photo:hover{transform:translateY(-3px);box-shadow:0 10px 25px #82515c15}.photo img{width:100%;height:175px;object-fit:cover;display:block}.photo div{padding:11px 12px;font-size:.85rem;line-height:1.5}.status{border-radius:15px;padding:12px 15px;background:#fff0f2;color:#8c5261;font-size:.86rem;line-height:1.6}.status.ok{background:#edf4e9;color:#526b4e}.status.error{background:#fff0e8;color:#995329}hr{opacity:.7}footer{text-align:center;color:#a18a90;padding:28px 12px 10px;font:italic 1rem Georgia,serif}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px}.photo{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff8f7;transition:transform .2s,box-shadow .2s}.photo:hover{transform:translateY(-3px);box-shadow:0 10px 25px #82515c15}.photo img{width:100%;height:175px;object-fit:cover;display:block}.photo div{padding:11px 12px;font-size:.85rem;line-height:1.5}.delete-btn{background:#f7e6e7;color:#8f4f61;box-shadow:none;padding:7px 12px;font-size:.78rem;margin:3px 0 0}.memory-item{border-bottom:1px solid var(--line);padding:12px 0}.memory-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.memory-head b{overflow-wrap:anywhere}.photo-actions{padding:0 11px 11px!important}.status{border-radius:15px;padding:12px 15px;background:#fff0f2;color:#8c5261;font-size:.86rem;line-height:1.6}.status.ok{background:#edf4e9;color:#526b4e}.status.error{background:#fff0e8;color:#995329}hr{opacity:.7}footer{text-align:center;color:#a18a90;padding:28px 12px 10px;font:italic 1rem Georgia,serif}
 .hidden{display:none!important}
 @media(max-width:600px){header{padding:50px 15px 30px}header:before,header:after{font-size:55px;top:25px}.card{padding:19px;border-radius:21px}.row{display:block}.day{min-width:76px;padding:10px 12px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.photo img{height:145px}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-<header><small>OUR LITTLE GATEWAY</small><h1>Our Chiang Rai Diary ♡</h1><p>6 — 12 พฤศจิกายน 2569</p></header>
+<header><small>OUR LITTLE GETAWAY</small><h1>Our Chiang Rai Diary ♡</h1><p>6 — 12 พฤศจิกายน 2569</p></header>
 <main>
 
 <section class="card">
@@ -53,7 +53,7 @@ const itinerary=[
 {d:11,name:"พุธ 11 พ.ย.",title:"วันสบาย ๆ ก่อนกลับ",events:[["เช้า","กินข้าวด้วยกัน","เวลาเปลี่ยนได้"],["กลางวัน","เลือกกิจกรรมที่อยากทำ","เผื่อเวลาเก็บของ"],["เย็น","เตรียมกระเป๋า","ตรวจเที่ยวบินและการเดินทางไปสนามบิน"]]},
 {d:12,name:"พฤหัสบดี 12 พ.ย.",title:"เดินทางกลับ",events:[["เช้า","เก็บกระเป๋าและเช็กเอาต์","ตรวจของใช้ส่วนตัว"],["ก่อน 12:00","เดินทางไปสนามบิน","เผื่อเวลาเช็กอิน"],["14:00–15:20","เที่ยวบินกลับ","เวลาตามข้อมูลที่ให้มา"]]}
 ];
-let sb=null,activeDay=6,channel=null;
+let sb=null,activeDay=6,channel=null,refreshTimer=null;
 function status(t,type=""){const e=$("status");e.textContent=t;e.className="status "+type}
 function renderDays(){$("days").innerHTML=itinerary.map(x=>`<button class="day ${x.d===activeDay?"active":""}" data-d="${x.d}">${x.d}<br><small>${x.name.split(" ")[0]}</small></button>`).join("");document.querySelectorAll(".day").forEach(b=>b.onclick=()=>{activeDay=+b.dataset.d;renderDays();renderSchedule();loadData()})}
 function renderSchedule(){const d=itinerary.find(x=>x.d===activeDay);$("dateTitle").textContent=d.name+" · "+d.title;$("schedule").innerHTML=d.events.map(e=>`<div class="event"><b>${e[0]} · ${e[1]}</b><p>${e[2]}</p></div>`).join("")}
@@ -69,9 +69,36 @@ try {
 }
 $("save").onclick=async()=>{if(!sb){status("ตั้งค่า Supabase ก่อน");return}const title=$("title").value.trim(),body=$("body").value.trim();if(!title&&!body){alert("เขียนหัวข้อหรือบันทึกก่อน");return}const r=await sb.from("memories").insert({day:activeDay,title,body});if(r.error){status("บันทึกไม่สำเร็จ: "+r.error.message,"error");return}$("title").value="";$("body").value="";status("บันทึกความทรงจำแล้ว ♡","ok");loadData()};
 $("upload").onclick=async()=>{if(!sb){status("ตั้งค่า Supabase ก่อน");return}const f=$("file").files[0];if(!f){alert("เลือกรูปก่อน");return}if(!f.type.startsWith("image/")||f.size>5*1024*1024){alert("เลือกไฟล์รูปขนาดไม่เกิน 5 MB");return}status("กำลังอัปโหลดรูป…");const path=`${activeDay}/${Date.now()}-${f.name.replace(/[^a-zA-Z0-9._-]/g,"_")}`;const u=await sb.storage.from("diary-photos").upload(path,f,{contentType:f.type});if(u.error){status("อัปโหลดไม่สำเร็จ: "+u.error.message,"error");return}const publicUrl=sb.storage.from("diary-photos").getPublicUrl(path).data.publicUrl;const r=await sb.from("photos").insert({day:activeDay,caption:$("caption").value.trim(),storage_path:path,public_url:publicUrl});if(r.error){status("อัปโหลดไฟล์แล้วแต่บันทึกข้อมูลไม่ได้: "+r.error.message,"error");return}$("caption").value="";$("file").value="";status("เพิ่มรูปแล้ว ♡","ok");loadData()};
-async function loadData(){if(!sb)return;const [m,p]=await Promise.all([sb.from("memories").select("id,day,title,body,created_at").eq("day",activeDay).order("created_at",{ascending:false}),sb.from("photos").select("id,day,caption,public_url,created_at").eq("day",activeDay).order("created_at",{ascending:false})]);if(m.error||p.error){status("ยังโหลดข้อมูลไม่ได้: "+(m.error?.message||p.error?.message)+" · ตรวจ SQL และ policies ใน SETUP.txt","error");return}
-$("memories").innerHTML=m.data.length?m.data.map(x=>`<div style="border-bottom:1px solid var(--line);padding:12px 0"><b>${esc(x.title||"บันทึก")}</b><p class="muted" style="white-space:pre-wrap">${esc(x.body||"")}</p></div>`).join(""):'<p class="muted">ยังไม่มีบันทึกของวันนี้</p>';
-$("gallery").innerHTML=p.data.length?p.data.map(x=>`<div class="photo"><a href="${x.public_url}" target="_blank" rel="noopener"><img src="${x.public_url}" alt="${esc(x.caption||"ความทรงจำ")}"></a><div>${esc(x.caption||"ความทรงจำ")}</div></div>`).join(""):'<p class="muted">ยังไม่มีรูปของวันนี้</p>';status("ข้อมูลล่าสุดโหลดแล้ว","ok")}
+async function deleteMemory(id){
+  if(!confirm("ลบบันทึกความทรงจำนี้ใช่ไหม? การลบจะมีผลกับทุกเครื่อง"))return;
+  const r=await sb.from("memories").delete().eq("id",id);
+  if(r.error){status("ลบบันทึกไม่สำเร็จ: "+r.error.message,"error");return}
+  status("ลบบันทึกแล้ว ♡","ok");await loadData(false);
+}
+async function deletePhoto(id,path){
+  if(!confirm("ลบรูปนี้ใช่ไหม? การลบจะมีผลกับทุกเครื่อง"))return;
+  const fileResult=await sb.storage.from("diary-photos").remove([path]);
+  if(fileResult.error){status("ลบไฟล์รูปไม่สำเร็จ: "+fileResult.error.message,"error");return}
+  const rowResult=await sb.from("photos").delete().eq("id",id);
+  if(rowResult.error){status("ลบไฟล์รูปแล้ว แต่ลบข้อมูลรายการไม่สำเร็จ: "+rowResult.error.message,"error");return}
+  status("ลบรูปแล้ว ♡","ok");await loadData(false);
+}
+async function loadData(showStatus=true){
+ if(!sb)return;
+ const [m,p]=await Promise.all([
+  sb.from("memories").select("id,day,title,body,created_at").eq("day",activeDay).order("created_at",{ascending:false}),
+  sb.from("photos").select("id,day,caption,storage_path,public_url,created_at").eq("day",activeDay).order("created_at",{ascending:false})
+ ]);
+ if(m.error||p.error){status("ยังโหลดข้อมูลไม่ได้: "+(m.error?.message||p.error?.message)+" · ตรวจ SQL และ policies ใน SETUP.txt","error");return}
+ $("memories").innerHTML=m.data.length?m.data.map(x=>`<div class="memory-item"><div class="memory-head"><b>${esc(x.title||"บันทึก")}</b><button class="delete-btn" data-delete-memory="${x.id}" type="button">ลบ</button></div><p class="muted" style="white-space:pre-wrap">${esc(x.body||"")}</p></div>`).join(""):'<p class="muted">ยังไม่มีบันทึกของวันนี้</p>';
+ $("gallery").innerHTML=p.data.length?p.data.map(x=>`<div class="photo"><a href="${x.public_url}" target="_blank" rel="noopener"><img src="${x.public_url}" alt="${esc(x.caption||"ความทรงจำ")}"></a><div>${esc(x.caption||"ความทรงจำ")}</div><div class="photo-actions"><button class="delete-btn" data-delete-photo="${x.id}" data-path="${esc(x.storage_path)}" type="button">ลบรูป</button></div></div>`).join(""):'<p class="muted">ยังไม่มีรูปของวันนี้</p>';
+ document.querySelectorAll("[data-delete-memory]").forEach(b=>b.onclick=()=>deleteMemory(b.dataset.deleteMemory));
+ document.querySelectorAll("[data-delete-photo]").forEach(b=>b.onclick=()=>deletePhoto(b.dataset.deletePhoto,b.dataset.path));
+ if(showStatus)status("ข้อมูลล่าสุดโหลดแล้ว","ok");
+}
+// Refresh the current day periodically so updates from the other device appear without manual reload.
+if(refreshTimer)clearInterval(refreshTimer);
+refreshTimer=setInterval(()=>loadData(false),10000);
 (async()=>{renderDays();renderSchedule();if(sb)await loadData()})();
 </script>
 </body></html>
