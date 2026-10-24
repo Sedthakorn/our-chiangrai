@@ -12,7 +12,7 @@ input,textarea,button{font:inherit}input,textarea{width:100%;border:1px solid #e
 button{border:0;border-radius:999px;background:linear-gradient(135deg,#c27c8c,#a95f74);color:white;padding:11px 18px;cursor:pointer;box-shadow:0 5px 13px #b76b7b24;transition:transform .18s,box-shadow .18s}button:hover{transform:translateY(-1px);box-shadow:0 8px 18px #b76b7b30}button:disabled{opacity:.5;cursor:wait}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}
 .days{display:flex;gap:8px;overflow:auto;padding:3px 1px 17px;scrollbar-width:thin}.day{flex:0 0 auto;min-width:86px;background:#fffaf8;border:1px solid var(--line);color:var(--ink);border-radius:17px;padding:12px 13px;box-shadow:none}.day small{font-size:.7rem;opacity:.8}.day.active{background:linear-gradient(145deg,#c98594,#a95f74);color:white;border-color:transparent}.event{border-left:1px solid #e8c0c7;padding:0 0 19px 17px;margin-left:6px;position:relative}.event:last-child{padding-bottom:2px}.event:before{content:"";position:absolute;width:9px;height:9px;background:#c47f8e;border:3px solid #fff5f4;border-radius:50%;left:-7px;top:4px;box-shadow:0 0 0 1px #e8c0c7}.event b{display:block;font-size:.95rem;font-weight:650}.event p{margin:5px 0 0;color:var(--muted);font-size:.87rem;line-height:1.6}.event-edit{margin-top:8px;padding:6px 11px;font-size:.76rem;box-shadow:none}.event-editor{margin:10px 0 0;padding:12px;background:#fff5f5;border:1px solid var(--line);border-radius:14px}.event-editor label{display:block}.event-editor input,.event-editor textarea{margin-bottom:8px}.event-editor textarea{min-height:65px}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px}.photo{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff8f7;transition:transform .2s,box-shadow .2s}.photo:hover{transform:translateY(-3px);box-shadow:0 10px 25px #82515c15}.photo img{width:100%;height:175px;object-fit:cover;display:block}.photo div{padding:11px 12px;font-size:.85rem;line-height:1.5}.delete-btn{background:#f7e6e7;color:#8f4f61;box-shadow:none;padding:7px 12px;font-size:.78rem;margin:3px 0 0}.memory-item{border-bottom:1px solid var(--line);padding:12px 0}.memory-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.memory-head b{overflow-wrap:anywhere}.photo-actions{padding:0 11px 11px!important}.status{border-radius:15px;padding:12px 15px;background:#fff0f2;color:#8c5261;font-size:.86rem;line-height:1.6}.status.ok{background:#edf4e9;color:#526b4e}.status.error{background:#fff0e8;color:#995329}hr{opacity:.7}footer{text-align:center;color:#a18a90;padding:28px 12px 10px;font:italic 1rem Georgia,serif}
-.hidden{display:none!important}.plan-editor{border-top:0;margin-top:10px;padding-top:0}.plan-item{border:1px solid var(--line);border-radius:15px;padding:12px 14px;margin:9px 0;background:#fffaf8}.plan-item-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.plan-item p{white-space:pre-wrap;color:var(--muted);font-size:.88rem;margin:6px 0 0}.plan-actions{display:flex;gap:6px;flex-wrap:wrap}.plan-edit{margin-top:9px;padding:10px;background:#fff5f5;border:1px solid var(--line);border-radius:12px}.plan-edit label{display:block}.plan-edit input,.plan-edit textarea{margin:5px 0 8px;padding:9px 11px}.plan-edit textarea{min-height:60px}.music-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:18px;background:#f9e9eb}.music-note{font-size:.85rem;color:var(--muted);line-height:1.65}.small-btn{display:inline-flex;align-items:center;width:auto;flex:0 0 auto;padding:6px 11px;font-size:.78rem;box-shadow:none;margin:0 0 6px}
+.hidden{display:none!important}.plan-editor{border-top:0;margin-top:10px;padding-top:0}.plan-item{border:1px solid var(--line);border-radius:15px;padding:12px 14px;margin:9px 0;background:#fffaf8}.custom-event{background:transparent}.plan-item-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.plan-item p{white-space:pre-wrap;color:var(--muted);font-size:.88rem;margin:6px 0 0}.plan-actions{display:flex;gap:6px;flex-wrap:wrap}.plan-edit{margin-top:9px;padding:10px;background:#fff5f5;border:1px solid var(--line);border-radius:12px}.plan-edit label{display:block}.plan-edit input,.plan-edit textarea{margin:5px 0 8px;padding:9px 11px}.plan-edit textarea{min-height:60px}.music-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:18px;background:#f9e9eb}.music-note{font-size:.85rem;color:var(--muted);line-height:1.65}.small-btn{display:inline-flex;align-items:center;width:auto;flex:0 0 auto;padding:6px 11px;font-size:.78rem;box-shadow:none;margin:0 0 6px}
 @media(max-width:600px){header{padding:50px 15px 30px}header:before,header:after{font-size:55px;top:25px}.card{padding:19px;border-radius:21px}.row{display:block}.day{min-width:76px;padding:10px 12px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.photo img{height:145px}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -25,7 +25,6 @@ button{border:0;border-radius:999px;background:linear-gradient(135deg,#c27c8c,#a
 <h2>Our days together ✿</h2><div class="days" id="days"></div>
 <h2 id="dateTitle">วันของเรา</h2><div id="schedule"></div>
 <div class="plan-editor">
-<div id="customPlans"></div>
 <button id="togglePlanForm" class="small-btn" type="button">＋ เพิ่มแผนใหม่</button>
 <div id="planForm" class="event-editor hidden">
 <label>เวลา</label><input id="planTime" placeholder="เช่น 14:00–15:00">
@@ -74,10 +73,10 @@ const itinerary=[
 ];
 let sb=null,activeDay=6,channel=null,refreshTimer=null,eventOverrides={};
 function status(t,type=""){const e=$("status");e.textContent=t;e.className="status "+type}
-function renderDays(){$("days").innerHTML=itinerary.map(x=>`<button class="day ${x.d===activeDay?"active":""}" data-d="${x.d}">${x.d}<br><small>${x.name.split(" ")[0]}</small></button>`).join("");document.querySelectorAll(".day").forEach(b=>b.onclick=()=>{activeDay=+b.dataset.d;renderDays();renderSchedule();loadData();loadPlans()})}
+function renderDays(){$("days").innerHTML=itinerary.map(x=>`<button class="day ${x.d===activeDay?"active":""}" data-d="${x.d}">${x.d}<br><small>${x.name.split(" ")[0]}</small></button>`).join("");document.querySelectorAll(".day").forEach(b=>b.onclick=()=>{activeDay=+b.dataset.d;renderDays();renderSchedule().then(()=>loadPlans());loadData()})}
 async function renderSchedule({fromRefresh=false}={}){
  // Background refresh must never replace the editor while the user is typing.
- if(fromRefresh && document.querySelector("#schedule .event-editor:not(.hidden)"))return;
+ if(fromRefresh && document.querySelector("#schedule .event-editor:not(.hidden), #schedule .plan-edit:not(.hidden)"))return;
  const dayToRender=activeDay;
  const d=itinerary.find(x=>x.d===dayToRender);
  if(!d)return;
@@ -87,7 +86,7 @@ async function renderSchedule({fromRefresh=false}={}){
   const built=await sb.from("itinerary_plans").select("event_index,time,title,details,is_builtin").eq("day",dayToRender).eq("is_builtin",true);
   // The request may have started before the editor was opened or another day selected.
   if(activeDay!==dayToRender)return;
-  if(fromRefresh && document.querySelector("#schedule .event-editor:not(.hidden)"))return;
+  if(fromRefresh && document.querySelector("#schedule .event-editor:not(.hidden), #schedule .plan-edit:not(.hidden)"))return;
   if(built.error){status("โหลดรายการเดิมไม่ได้: "+built.error.message+" · ตรวจคอลัมน์ event_index/is_builtin และสิทธิ์ SQL","error");}
   else rows=built.data||[];
  }
@@ -98,8 +97,8 @@ async function renderSchedule({fromRefresh=false}={}){
   const time=x.time??e[0],title=x.title??e[1],details=x.details??e[2];
   return `<div class="event"><b>${esc(time)} · ${esc(title)}</b><p>${esc(details)}</p><button class="event-edit" type="button" data-edit-event="${i}">✎ แก้ไข</button> <button class="delete-btn" type="button" data-delete-event="${i}">ลบแผน</button><div class="event-editor hidden" id="editor-${i}"><label>เวลา</label><input id="edit-time-${i}" value="${esc(time)}"><label>ชื่อกิจกรรม / สถานที่</label><input id="edit-title-${i}" value="${esc(title)}"><label>รายละเอียด</label><textarea id="edit-details-${i}">${esc(details)}</textarea><div class="row"><button type="button" data-save-event="${i}">บันทึกการแก้ไข ♡</button><button type="button" class="delete-btn" data-cancel-event="${i}">ปิด</button></div></div></div>`;
  }).join("");
- // Custom plans render only in #customPlans to avoid duplicate large cards.
- $("schedule").innerHTML=builtHtml;
+ // Custom plans are rendered inside the same timeline, after the built-in events.
+ $("schedule").innerHTML=builtHtml+'<div id="customPlans"></div>';
  document.querySelectorAll("[data-edit-event]").forEach(b=>b.onclick=()=>$("editor-"+b.dataset.editEvent).classList.toggle("hidden"));
  document.querySelectorAll("[data-cancel-event]").forEach(b=>b.onclick=()=>$("editor-"+b.dataset.cancelEvent).classList.add("hidden"));
  document.querySelectorAll("[data-save-event]").forEach(b=>b.onclick=()=>saveBuiltinEvent(+b.dataset.saveEvent));
@@ -129,12 +128,14 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_qqpXMZ3eJ8wBE0tYv-_0kQ_thvHwxKl
 async function loadPlans(){
  if(!sb)return;
  // Do not replace an open custom-plan editor during the five-second background refresh.
- if(document.querySelector("#customPlans .plan-edit:not(.hidden)"))return;
+ if(document.querySelector("#schedule .plan-edit:not(.hidden)"))return;
  const dayToRender=activeDay;
  const r=await sb.from("itinerary_plans").select("id,day,time,title,details,created_at").eq("day",dayToRender).eq("is_builtin",false).order("created_at",{ascending:true});
  if(activeDay!==dayToRender)return;
  if(r.error){$("customPlans").innerHTML='<p class="muted">ต้องสร้างตาราง itinerary_plans ใน Supabase ก่อน ดูคู่มือติดตั้ง</p>';return}
- $("customPlans").innerHTML=r.data.length?r.data.map(x=>`<div class="plan-item"><div class="plan-item-top"><b>${esc(x.time||"ไม่ระบุเวลา")} · ${esc(x.title)}</b><div class="plan-actions"><button class="event-edit" data-plan-edit="${x.id}" type="button">✎ แก้ไข</button><button class="delete-btn" data-plan-delete="${x.id}" type="button">ลบแผน</button></div></div><p>${esc(x.details||"")}</p><div class="plan-edit hidden" id="plan-edit-${x.id}"><label>เวลา</label><input id="plan-time-${x.id}" value="${esc(x.time||"")}" placeholder="เช่น 14:00–15:00"><label>ชื่อกิจกรรม / สถานที่</label><input id="plan-title-${x.id}" value="${esc(x.title||"")}"><label>รายละเอียด</label><textarea id="plan-details-${x.id}" placeholder="รายละเอียด">${esc(x.details||"")}</textarea><div class="row"><button type="button" data-plan-save="${x.id}">บันทึกการแก้ไข ♡</button><button class="delete-btn" type="button" data-plan-cancel="${x.id}">ปิด</button></div></div></div>`).join(""):"";
+ const host=$("customPlans");
+ if(!host)return;
+ host.innerHTML=r.data.length?r.data.map(x=>`<div class="event custom-event"><b>${esc(x.time||"ไม่ระบุเวลา")} · ${esc(x.title)}</b><p>${esc(x.details||"")}</p><button class="event-edit" data-plan-edit="${x.id}" type="button">✎ แก้ไข</button> <button class="delete-btn" data-plan-delete="${x.id}" type="button">ลบแผน</button><div class="plan-edit hidden" id="plan-edit-${x.id}"><label>เวลา</label><input id="plan-time-${x.id}" value="${esc(x.time||"")}" placeholder="เช่น 14:00–15:00"><label>ชื่อกิจกรรม / สถานที่</label><input id="plan-title-${x.id}" value="${esc(x.title||"")}"><label>รายละเอียด</label><textarea id="plan-details-${x.id}" placeholder="รายละเอียด">${esc(x.details||"")}</textarea><div class="row"><button type="button" data-plan-save="${x.id}">บันทึกการแก้ไข ♡</button><button class="delete-btn" type="button" data-plan-cancel="${x.id}">ปิด</button></div></div></div>`).join(""):"";
  document.querySelectorAll("[data-plan-delete]").forEach(b=>b.onclick=()=>deletePlan(b.dataset.planDelete));
  document.querySelectorAll("[data-plan-edit]").forEach(b=>b.onclick=()=>$("plan-edit-"+b.dataset.planEdit).classList.toggle("hidden"));
  document.querySelectorAll("[data-plan-cancel]").forEach(b=>b.onclick=()=>$("plan-edit-"+b.dataset.planCancel).classList.add("hidden"));
@@ -151,7 +152,7 @@ async function saveCustomPlan(id){
 async function deletePlan(id){if(!confirm("ลบแผนนี้ใช่ไหม? การลบมีผลกับทั้งสองเครื่อง"))return;if(!sb){status("เชื่อมต่อ Supabase ไม่สำเร็จ","error");return}const r=await sb.from("itinerary_plans").delete().eq("id",id).eq("is_builtin",false);if(r.error){status("ลบแผนไม่สำเร็จ: "+r.error.message+" · ตรวจ DELETE policy ใน SQL","error");return}status("ลบแผนแล้ว ♡","ok");await loadPlans()}
 $("togglePlanForm").onclick=()=>$("planForm").classList.toggle("hidden");
 $("cancelPlanForm").onclick=()=>$("planForm").classList.add("hidden");
-$("addPlan").onclick=async()=>{const time=$("planTime").value.trim(),title=$("planTitle").value.trim(),details=$("planDetails").value.trim();if(!title){alert("ใส่ชื่อกิจกรรมหรือสถานที่ก่อนนะ");return}const r=await sb.from("itinerary_plans").insert({day:activeDay,time,title,details,is_builtin:false});if(r.error){status("เพิ่มแผนไม่สำเร็จ: "+r.error.message+" · ตรวจ SQL ในคู่มือติดตั้ง","error");return}$("planTime").value="";$("planTitle").value="";$("planDetails").value="";status("เพิ่มแผนแล้ว ♡","ok");$("planForm").classList.add("hidden");await renderSchedule();loadPlans()};
+$("addPlan").onclick=async()=>{const time=$("planTime").value.trim(),title=$("planTitle").value.trim(),details=$("planDetails").value.trim();if(!title){alert("ใส่ชื่อกิจกรรมหรือสถานที่ก่อนนะ");return}const r=await sb.from("itinerary_plans").insert({day:activeDay,time,title,details,is_builtin:false});if(r.error){status("เพิ่มแผนไม่สำเร็จ: "+r.error.message+" · ตรวจ SQL ในคู่มือติดตั้ง","error");return}$("planTime").value="";$("planTitle").value="";$("planDetails").value="";status("เพิ่มแผนแล้ว ♡","ok");$("planForm").classList.add("hidden");await renderSchedule();await loadPlans()};
 $("searchSong").onclick=()=>{const q=$("songSearch").value.trim();if(!q){alert("พิมพ์ชื่อเพลงหรือศิลปินก่อนนะ");return}window.open("https://www.youtube.com/results?search_query="+encodeURIComponent(q),"_blank","noopener,noreferrer")};
 $("playSong").onclick=()=>{const raw=$("songUrl").value.trim();let id="";try{const u=new URL(raw);if(u.hostname.endsWith("youtu.be"))id=u.pathname.slice(1).split("/")[0];else if(u.hostname.includes("youtube.com")){if(u.pathname==="/watch")id=u.searchParams.get("v")||"";else if(u.pathname.startsWith("/shorts/" )||u.pathname.startsWith("/embed/"))id=u.pathname.split("/")[2]||""}}catch(e){}if(!/^[A-Za-z0-9_-]{11}$/.test(id)){alert("ลิงก์ไม่ถูกต้อง ลองคัดลอกลิงก์วิดีโอ YouTube ปกติมาวางนะ");return}$("youtubePlayer").src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0";$("playerWrap").classList.remove("hidden")};
 try {
@@ -191,7 +192,7 @@ async function loadData(showStatus=true){
 }
 // Refresh the current day periodically so updates from the other device appear without manual reload.
 if(refreshTimer)clearInterval(refreshTimer);
-refreshTimer=setInterval(()=>{loadData(false);loadPlans();renderSchedule({fromRefresh:true})},5000);
+refreshTimer=setInterval(()=>{loadData(false);renderSchedule({fromRefresh:true}).then(()=>loadPlans())},5000);
 (async()=>{renderDays();renderSchedule();if(sb){await loadData();await loadPlans()}})();
 </script>
 </body></html>
